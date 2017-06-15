@@ -5,17 +5,17 @@
   
   <title>小保</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jvm-内存管理机制（一）JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。 运行时数据区域堆（各线程共享区域）1.java虚拟机所管理的内存中最大的一块。java堆时被所有线程共享的一块内存区域，在虚拟机启动时创建。2.此内存区域的唯一目的就是存放对象实例，几乎所有的对">
+  <meta name="description" content="jvm-内存管理机制（一）JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。 运行时数据区域堆（各线程共享区域）1.java虚拟机所管理的内存中最大的一块。java堆时被所有线程共享的一块内存区域，在虚拟机启动时创建。2.此内存区域的唯一目的就是存放对象实例，几乎所有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小保">
 <meta property="og:url" content="https://github.com/henjuese/henjuese.github.io.git/2017/06/08/jvm-jvm/index.html">
 <meta property="og:site_name" content="小保">
-<meta property="og:description" content="jvm-内存管理机制（一）JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。 运行时数据区域堆（各线程共享区域）1.java虚拟机所管理的内存中最大的一块。java堆时被所有线程共享的一块内存区域，在虚拟机启动时创建。2.此内存区域的唯一目的就是存放对象实例，几乎所有的对">
+<meta property="og:description" content="jvm-内存管理机制（一）JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。 运行时数据区域堆（各线程共享区域）1.java虚拟机所管理的内存中最大的一块。java堆时被所有线程共享的一块内存区域，在虚拟机启动时创建。2.此内存区域的唯一目的就是存放对象实例，几乎所有">
 <meta property="og:image" content="http://oqumwumio.bkt.clouddn.com/structure.png">
-<meta property="og:updated_time" content="2017-06-13T02:45:38.000Z">
+<meta property="og:updated_time" content="2017-06-15T07:45:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小保">
-<meta name="twitter:description" content="jvm-内存管理机制（一）JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。 运行时数据区域堆（各线程共享区域）1.java虚拟机所管理的内存中最大的一块。java堆时被所有线程共享的一块内存区域，在虚拟机启动时创建。2.此内存区域的唯一目的就是存放对象实例，几乎所有的对">
+<meta name="twitter:description" content="jvm-内存管理机制（一）JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。 运行时数据区域堆（各线程共享区域）1.java虚拟机所管理的内存中最大的一块。java堆时被所有线程共享的一块内存区域，在虚拟机启动时创建。2.此内存区域的唯一目的就是存放对象实例，几乎所有">
 <meta name="twitter:image" content="http://oqumwumio.bkt.clouddn.com/structure.png">
   
     <link rel="alternate" href="/atom.xml" title="小保" type="application/atom+xml">
@@ -81,7 +81,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="jvm-内存管理机制（一）"><a href="#jvm-内存管理机制（一）" class="headerlink" title="jvm-内存管理机制（一）"></a>jvm-内存管理机制（一）</h1><p>JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。<br>JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。<br><img src="http://oqumwumio.bkt.clouddn.com/structure.png" alt=""></p>
+        <hr>
+<h2 id="jvm-内存管理机制（一）"><a href="#jvm-内存管理机制（一）" class="headerlink" title=" jvm-内存管理机制（一）"></a> jvm-内存管理机制（一）</h2><p>JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。<br>JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。<br><img src="http://oqumwumio.bkt.clouddn.com/structure.png" alt=""></p>
 <h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><h3 id="堆（各线程共享区域）"><a href="#堆（各线程共享区域）" class="headerlink" title="堆（各线程共享区域）"></a>堆（各线程共享区域）</h3><p>1.java虚拟机所管理的内存中最大的一块。java堆时被所有线程共享的一块内存区域，在虚拟机启动时创建。<br>2.此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。（几乎所有的对象实例以及数组都要在堆上分配。<br>3.java堆实GC管理的只要区域，也称为GC堆。<br>4.java堆中还细分未：新生代，老年代；再细分一点有Eden空间，From Survivor空间，To Survivor空间</p>
 <h3 id="方法区（各线程共享区域）"><a href="#方法区（各线程共享区域）" class="headerlink" title="方法区（各线程共享区域）"></a>方法区（各线程共享区域）</h3><p>1.各线程共享区域，存储已被虚拟机加载的类信息，常量，静态变量，即时编译器编译后的代码等数据<br>2.GC很少出现在该区域，主要针对常量池的回收和对类的卸载回收。GC效果不明显但有时候有必须回收该区域</p>
 <h3 id="虚拟机栈vm-stack（私有）"><a href="#虚拟机栈vm-stack（私有）" class="headerlink" title="虚拟机栈vm stack（私有）"></a>虚拟机栈vm stack（私有）</h3><p>1.每个方法在执行的同时都会创建一个栈帧用于存储局部变量，操作数栈，动态链接，方法出口等信息，每一个方法被调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程<br>2.如果线程请求的栈深度大于虚拟机所允许的深度，将会抛出stackoverflowError；如果虚拟机可以动态扩展，但是无法申请到足够的内存时，就会抛出outOfMemoryError异常  </p>

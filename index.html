@@ -125,7 +125,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="jvm-内存管理机制（一）"><a href="#jvm-内存管理机制（一）" class="headerlink" title="jvm-内存管理机制（一）"></a>jvm-内存管理机制（一）</h1><p>JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。<br>JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。<br><img src="http://oqumwumio.bkt.clouddn.com/structure.png" alt=""></p>
+        <hr>
+<h2 id="jvm-内存管理机制（一）"><a href="#jvm-内存管理机制（一）" class="headerlink" title=" jvm-内存管理机制（一）"></a> jvm-内存管理机制（一）</h2><p>JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。<br>JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。<br><img src="http://oqumwumio.bkt.clouddn.com/structure.png" alt=""></p>
 <h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><h3 id="堆（各线程共享区域）"><a href="#堆（各线程共享区域）" class="headerlink" title="堆（各线程共享区域）"></a>堆（各线程共享区域）</h3><p>1.java虚拟机所管理的内存中最大的一块。java堆时被所有线程共享的一块内存区域，在虚拟机启动时创建。<br>2.此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。（几乎所有的对象实例以及数组都要在堆上分配。<br>3.java堆实GC管理的只要区域，也称为GC堆。<br>4.java堆中还细分未：新生代，老年代；再细分一点有Eden空间，From Survivor空间，To Survivor空间</p>
 <h3 id="方法区（各线程共享区域）"><a href="#方法区（各线程共享区域）" class="headerlink" title="方法区（各线程共享区域）"></a>方法区（各线程共享区域）</h3><p>1.各线程共享区域，存储已被虚拟机加载的类信息，常量，静态变量，即时编译器编译后的代码等数据<br>2.GC很少出现在该区域，主要针对常量池的回收和对类的卸载回收。GC效果不明显但有时候有必须回收该区域</p>
 <h3 id="虚拟机栈vm-stack（私有）"><a href="#虚拟机栈vm-stack（私有）" class="headerlink" title="虚拟机栈vm stack（私有）"></a>虚拟机栈vm stack（私有）</h3><p>1.每个方法在执行的同时都会创建一个栈帧用于存储局部变量，操作数栈，动态链接，方法出口等信息，每一个方法被调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程<br>2.如果线程请求的栈深度大于虚拟机所允许的深度，将会抛出stackoverflowError；如果虚拟机可以动态扩展，但是无法申请到足够的内存时，就会抛出outOfMemoryError异常  </p>
@@ -240,7 +241,7 @@
 <p><img src="http://img.blog.csdn.net/20141113154008360" alt=""></p>
 <h2 id="方法表集合"><a href="#方法表集合" class="headerlink" title="方法表集合"></a>方法表集合</h2><p> 方法表集合是指由<strong>若干个方法表（method_info）组成的集合</strong>。对于在类中定义的若干个，经过JVM编译成class文件后，会将相应的method方法信息组织到一个叫做方法表集合的结构中，字段表集合是一个类数组结构，如下图所示：<br><img src="http://img.blog.csdn.net/20141114104145226" alt="">  </p>
 <p>一个类中方法包含的信息<br><img src="http://img.blog.csdn.net/20141114150716551" alt=""></p>
-<p>##属性表集合<br>记录方法的机器指令和抛出异常等信息属性表集合记录了某个方法的一些属性信息，这些信息包括：</p>
+<h2 id="属性表集合"><a href="#属性表集合" class="headerlink" title="属性表集合"></a>属性表集合</h2><p>记录方法的机器指令和抛出异常等信息属性表集合记录了某个方法的一些属性信息，这些信息包括：</p>
 <ul>
 <li>这个方法的代码实现，<strong>即方法的可执行的机器指令</strong></li>
 <li>这个方法声明的要抛出的异常信息</li>
