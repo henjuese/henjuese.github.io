@@ -5,15 +5,35 @@
   
   <title>小保</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一定要记住“温故知新”">
-<meta property="og:type" content="website">
+  <meta name="description" content="jvm-class类文件结构（三）Java虚拟机已经实现了语言无关性的特点。而实现语言无关性的基础是虚拟机和字节码的存储格式，Java虚拟机已经不和包括Java语言在内的任何语言绑定。它只与“class”文件这种特定的二进制文件相关联。在class文件中包含了Java虚拟机指令集和符号表以及若干辅助信息。  任何编程语言只要能编译成class文件，并且符合class规定的文件格式，就可以在java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="小保">
-<meta property="og:url" content="https://github.com/henjuese/henjuese.github.io.git/index.html">
+<meta property="og:url" content="https://github.com/henjuese/henjuese.github.io.git/2017/06/05/jvm-class/index.html">
 <meta property="og:site_name" content="小保">
-<meta property="og:description" content="一定要记住“温故知新”">
+<meta property="og:description" content="jvm-class类文件结构（三）Java虚拟机已经实现了语言无关性的特点。而实现语言无关性的基础是虚拟机和字节码的存储格式，Java虚拟机已经不和包括Java语言在内的任何语言绑定。它只与“class”文件这种特定的二进制文件相关联。在class文件中包含了Java虚拟机指令集和符号表以及若干辅助信息。  任何编程语言只要能编译成class文件，并且符合class规定的文件格式，就可以在java">
+<meta property="og:image" content="http://img.blog.csdn.net/20160505210800622">
+<meta property="og:image" content="http://img.blog.csdn.net/20141010133603275">
+<meta property="og:image" content="http://img.blog.csdn.net/20141112171939923">
+<meta property="og:image" content="http://img.blog.csdn.net/20141010174452984">
+<meta property="og:image" content="http://img.blog.csdn.net/20141011111433728">
+<meta property="og:image" content="http://img.blog.csdn.net/20160505210921426">
+<meta property="og:image" content="http://img.blog.csdn.net/20160505211102114">
+<meta property="og:image" content="http://img.blog.csdn.net/20141112123015283">
+<meta property="og:image" content="http://img.blog.csdn.net/20141112145635992">
+<meta property="og:image" content="http://img.blog.csdn.net/20141112150226821">
+<meta property="og:image" content="http://img.blog.csdn.net/20141113103118835">
+<meta property="og:image" content="http://img.blog.csdn.net/20141113150228416">
+<meta property="og:image" content="http://img.blog.csdn.net/20141113104136471">
+<meta property="og:image" content="http://img.blog.csdn.net/20160505211650462">
+<meta property="og:image" content="http://img.blog.csdn.net/20141113154008360">
+<meta property="og:image" content="http://img.blog.csdn.net/20141114104145226">
+<meta property="og:image" content="http://img.blog.csdn.net/20141114150716551">
+<meta property="og:image" content="http://img.blog.csdn.net/20141116114625218">
+<meta property="og:updated_time" content="2017-06-13T06:25:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小保">
-<meta name="twitter:description" content="一定要记住“温故知新”">
+<meta name="twitter:description" content="jvm-class类文件结构（三）Java虚拟机已经实现了语言无关性的特点。而实现语言无关性的基础是虚拟机和字节码的存储格式，Java虚拟机已经不和包括Java语言在内的任何语言绑定。它只与“class”文件这种特定的二进制文件相关联。在class文件中包含了Java虚拟机指令集和符号表以及若干辅助信息。  任何编程语言只要能编译成class文件，并且符合class规定的文件格式，就可以在java">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160505210800622">
   
     <link rel="alternate" href="/atom.xml" title="小保" type="application/atom+xml">
   
@@ -66,111 +86,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/15/hello-world/" class="article-date">
-  <time datetime="2017-06-15T02:51:54.000Z" itemprop="datePublished">2017-06-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/henjuese/henjuese.github.io.git/2017/06/15/hello-world/" data-id="cj3xu2t5a00007wfyb3xx7per" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jvm-jvm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/08/jvm-jvm/" class="article-date">
-  <time datetime="2017-06-08T02:28:49.000Z" itemprop="datePublished">2017-06-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="jvm-内存管理机制（一）"><a href="#jvm-内存管理机制（一）" class="headerlink" title="jvm-内存管理机制（一）"></a>jvm-内存管理机制（一）</h1><p>JVM内存区域主要包括如下部分：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。<br>JVM内存管理也可以理解为jvm运行时数据区，jvm内存主要管理的就是这片内存区域。<br><img src="http://oqumwumio.bkt.clouddn.com/structure.png" alt=""></p>
-<h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><h3 id="堆（各线程共享区域）"><a href="#堆（各线程共享区域）" class="headerlink" title="堆（各线程共享区域）"></a>堆（各线程共享区域）</h3><p>1.java虚拟机所管理的内存中最大的一块。java堆时被所有线程共享的一块内存区域，在虚拟机启动时创建。<br>2.此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。（几乎所有的对象实例以及数组都要在堆上分配。<br>3.java堆实GC管理的只要区域，也称为GC堆。<br>4.java堆中还细分未：新生代，老年代；再细分一点有Eden空间，From Survivor空间，To Survivor空间</p>
-<h3 id="方法区（各线程共享区域）"><a href="#方法区（各线程共享区域）" class="headerlink" title="方法区（各线程共享区域）"></a>方法区（各线程共享区域）</h3><p>1.各线程共享区域，存储已被虚拟机加载的类信息，常量，静态变量，即时编译器编译后的代码等数据<br>2.GC很少出现在该区域，主要针对常量池的回收和对类的卸载回收。GC效果不明显但有时候有必须回收该区域</p>
-<h3 id="虚拟机栈vm-stack（私有）"><a href="#虚拟机栈vm-stack（私有）" class="headerlink" title="虚拟机栈vm stack（私有）"></a>虚拟机栈vm stack（私有）</h3><p>1.每个方法在执行的同时都会创建一个栈帧用于存储局部变量，操作数栈，动态链接，方法出口等信息，每一个方法被调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程<br>2.如果线程请求的栈深度大于虚拟机所允许的深度，将会抛出stackoverflowError；如果虚拟机可以动态扩展，但是无法申请到足够的内存时，就会抛出outOfMemoryError异常  </p>
-<h3 id="本地方法栈（私有）"><a href="#本地方法栈（私有）" class="headerlink" title="本地方法栈（私有）"></a>本地方法栈（私有）</h3><p>虚拟机栈未虚拟机执行java方法提供服务，而本地方法栈未虚拟机使用到的本地方法服务。</p>
-<h3 id="程序计数器（私有）"><a href="#程序计数器（私有）" class="headerlink" title="程序计数器（私有）"></a>程序计数器（私有）</h3><p>1.是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的行号指示器。每条线程都需要一个独立的程序计数器，各线程之间互不影响<br>2.字节码解释器选取下一条指令，分支，循环，跳转，异常处理，线程恢复都需要依赖它  </p>
-<p>###Java中的常量池<br>java 常量池实际上分为两种形态：静态常量池 和运行时常量池 。</p>
-<ul>
-<li>所谓静态常量池 ，即*.class文件中的常量池，class文件中的常量池不仅仅包含字符串(数字)字面量，还包含类、方法的信息，占用class文件绝大部分空间。</li>
-<li>而运行时常量池 ，则是jvm虚拟机在完成类装载操作后，将class文件中的常量池载入到内存中，并保存在方法区 中，我们常说的常量池，就是指方法区中的运行时常量池。</li>
-</ul>
-<h4 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h4><p>常量池（Constant Pool Table），用于存放编译期生成的各种字面量、符号引用，文字字符串、final变量值、类名和方法名常量，这部分内容将在类加载后存放到方法区的运行时常量池中。它们以数组形式访问，是调用方法、与类联系及类的对象化的桥梁。  </p>
-<p>运行时常量池除了存放编译期产生的Class文件的常量外，还可存放在程序运行期间生成的新常量，比较常见增加新常量方法有String类的internd()方法。String.intern()是一个Native方法，它的作用是：如果运行时常量池中已经包含一个等于此String对象内容的字符串，则返回常量池中该字符串的引用；如果没有，则在常量池中创建与此String内容相同的字符串，并返回常量池中创建的字符串的引用。不过JDK7的intern（）方法的实现有所不同，当常量池中没有该字符串时，不再是在常量池中创建与此String内容相同的字符串，而改为在常量池中记录堆中首次出现的该字符串的引用，并返回该引用。  </p>
-<p>总结： </p>
-<ul>
-<li>运行时常量池中的常量，基本来源于各个class文件中的常量池。</li>
-<li>程序运行时，除非手动向常量池中添加常量(比如调用intern方法)，否则jvm不会自动添加常量到常量池。  </li>
-</ul>
-<p>由于运行时常量池在方法区中，我们可以通过jvm参数：-XX:PermSize、-XX:MaxPermSize来设置方法区大小，从而间接限制常量池大小。<br>在jdk8中，移除了方法区，转而用Metaspace区域替代，所以我们需要使用新的jvm参数：-XX:MaxMetaspaceSize</p>
-<p><strong>但是，JDK1.7之前运行时常量池是方法区的一部分，JDK1.7及之后版本已经将运行时常量池从方法区中移了出来，在堆（Heap）中开辟了一块区域存放运行时常量池。</strong></p>
-<h3 id="Metaspace区？"><a href="#Metaspace区？" class="headerlink" title="Metaspace区？"></a>Metaspace区？</h3><h2 id="HotSpot对象组成介绍"><a href="#HotSpot对象组成介绍" class="headerlink" title="HotSpot对象组成介绍"></a>HotSpot对象组成介绍</h2><p>HotSpot 对象主要有：实例数据，对齐填充，对象头组成。</p>
-<h3 id="对象头（Mark-word）"><a href="#对象头（Mark-word）" class="headerlink" title="对象头（Mark word）"></a>对象头（Mark word）</h3><p>存储对象自身的运行时数据，如哈希码，GC分代年龄，锁状态标志，线程持有的锁，偏向线程ID，偏向时间戳，类型指针，即对象指向它的类元数据的指针，虚拟机通过这个指针来确定这个对象是哪个类的实例</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>类和对象在运行时的内存里是怎么样的？以及各类型变量、方法在运行时是怎么交互的？</p>
-<ul>
-<li>在程序运行时类是在方法区，实例对象本身在堆里面。</li>
-<li>方法字节码在方法区。</li>
-<li>线程调用方法执行时创建栈帧并压栈，方法的参数和局部变量在栈帧的局部变量表。</li>
-<li>对象的实例变量和对象一起在堆里，所以各个线程都可以共享访问对象的实例变量。</li>
-<li>静态变量在方法区，所有对象共享。字符串常量等常量在运行时常量池。</li>
-<li>各线程调用的方法，通过堆内的对象，方法区的静态数据，可以共享交互信息。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/henjuese/henjuese.github.io.git/2017/06/08/jvm-jvm/" data-id="cj3y4c6nh0001nifyhstqaann" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jvm-class" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-jvm-class" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/06/05/jvm-class/" class="article-date">
   <time datetime="2017-06-05T03:52:43.000Z" itemprop="datePublished">2017-06-05</time>
@@ -269,10 +185,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/08/jvm-jvm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 </section>
         
